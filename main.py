@@ -21,9 +21,7 @@ import threading
 framebg = "#14213d"    
 bodybg = "#e5e5e5"     
 text1_bg = "#dff6ff"  
-text2_bg = "#e8e8ff"   
-button_bg = "#fca311" 
-button_fg = "#ffffff"  
+text2_bg = "#e8efff"   
 label_fg = "#000000"   
 
 
@@ -37,7 +35,7 @@ language_list = list(supported_languages.keys())
 
 
 root = Tk()
-root.title("Text to Speech and Speech to Text Application")
+root.title("Text Translate Tool")
 root.geometry("1100x650+190+50")
 root.config(bg=bodybg)
 
@@ -54,25 +52,26 @@ Label(Top_frame, image=logo_icon, bg=framebg).place(x=40, y=20)
 
 Label(
     Top_frame,
-    text="TEXT TOOL",
-    font="Arial 28 bold",
+    text="TEXT TRANSLATE TOOL",
+    font="Arial 20 bold",
     bg=framebg,
     fg="#ffffff"
-).place(x=200, y=35)
+).place(x=180, y=48)
 
 
 text_area1 = Text(root, font="Arial 16", bg=text1_bg, relief=GROOVE, wrap=WORD)
-text_area1.place(x=40, y=160, width=600, height=180)
+text_area1.place(x=30, y=180, width=600, height=180)
 
 text_area2 = Text(root, font="Arial 16", bg=text2_bg, relief=GROOVE, wrap=WORD)
-text_area2.place(x=40, y=380, width=600, height=180)
+text_area2.place(x=30, y=400, width=600, height=180)
+
 
 combo1 = ttk.Combobox(root, values=language_list, font="Arial 14", state="readonly", width=12)
-combo1.place(x=700, y=160)
+combo1.place(x=60, y=140)
 combo1.set("ENGLISH")
 
 combo2 = ttk.Combobox(root, values=language_list, font="Arial 14", state="readonly", width=12)
-combo2.place(x=700, y=220)
+combo2.place(x=250, y=140)
 combo2.set("SINHALA")
 
 Label(root, text="VOICE", font="Arial 14", bg=bodybg, fg=label_fg).place(x=700, y=300)
@@ -102,31 +101,31 @@ value_label.place(x=960, y=350)
 
 #Buttons
 image_icon=PhotoImage(file="Images/speak.png")
-btn=Button(root,compound=LEFT,image=image_icon, bg=button_bg,fg=button_fg)
+btn=Button(root,compound=LEFT,image=image_icon)
 btn.place(x=700, y=450)
 
 image_icon2=PhotoImage(file="Images/download.png")
-save=Button(root,compound=LEFT,image=image_icon2, bg=button_bg,fg=button_fg)
+save=Button(root,compound=LEFT,image=image_icon2)
 save.place(x=830, y=450)
 
 pdfupload=PhotoImage(file="Images/pdfimage.png")
-upload_button=Button(root,compound=LEFT,image=pdfupload, bg=button_bg,fg=button_fg)
-upload_button.place(x=700, y=57)
+upload_button=Button(root,compound=LEFT,image=pdfupload)
+upload_button.place(x=680, y=48)
 
 upload_audioimage=PhotoImage(file="Images/music.png")
-upload_audio_button=Button(root,compound=LEFT,image=upload_audioimage, bg=button_bg,fg=button_fg)
-upload_audio_button.place(x=630,y=57)
+upload_audio_button=Button(root,compound=LEFT,image=upload_audioimage)
+upload_audio_button.place(x=750,y=48)
 
 transimage=PhotoImage(file="Images/trans.png")
-trans_image_button=Button(root,compound=LEFT,image=transimage, bg=button_bg,fg=button_fg)
-trans_image_button.place(x=550,y=57)
+trans_image_button=Button(root,compound=LEFT,image=transimage)
+trans_image_button.place(x=810,y=48)
 
 speakimage=PhotoImage(file="Images/otherspeaker.png")
-speak_button=Button(root,compound=LEFT,image=speakimage, bg=button_bg,fg=button_fg)
+speak_button=Button(root,compound=LEFT,image=speakimage)
 speak_button.place(x=50,y=525)
 
 micimage=PhotoImage(file="Images/mic.png")
-mic_button=Button(root,compound=LEFT,image=micimage, bg=button_bg,fg=button_fg)
+mic_button=Button(root,compound=LEFT,image=micimage)
 mic_button.place(x=50,y=305)
 
 
@@ -152,8 +151,8 @@ def chnagemode():
 
 textmode=PhotoImage(file="Images/modeText.png")
 pdfmode=PhotoImage(file="Images/modepdf.png")
-mode=Button(root,image=textmode,bg=framebg,bd=0,command=changemode)
-mode.place(x=950,y=57)
+mode=Button(root,image=textmode,bg=framebg,bd=0,command=chnagemode)
+mode.place(x=900,y=30)
 
 
 
@@ -165,10 +164,8 @@ def convert_text():
     text_area2.delete("1.0", END)
     text_area2.insert(END, translated)
 
-convert_btn = Button(root, text="Translate", font=("Arial", 14, "bold"),
-                     bg=button_bg, fg=button_fg, command=convert_text)
-convert_btn.place(x=700, y=400, width=120, height=40)
-
+convert_btn = Button(root, text="Translate", font=("Arial", 14, "bold"), command=convert_text)
+convert_btn.place(x=450, y=140, width=100, height=30)
 
 
 
